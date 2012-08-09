@@ -1,0 +1,12 @@
+extends ../../../views/layout
+
+block content
+  h1= title
+  p All of the peoplz
+  - if(people.length)
+    ul.people
+      - for( var person in people ){
+        li=person.name
+      - }
+  - else
+    p Couldn't find anyone :(

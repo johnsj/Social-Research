@@ -21,3 +21,8 @@ ul.nav li {
 ul.nav li a {
   text-decoration: none;
 }
+ul.people {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}

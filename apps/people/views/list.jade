@@ -2,11 +2,11 @@ extends ../../../views/layout
 
 block content
   h1= title
-  p All of the peoplz
+  p All of the people: #{people.length}
   - if(people.length)
     ul.people
       - for( var person in people ){
-        li=person.name
+        li #{people[person].name} lives at #{people[person].address}
       - }
   - else
     p Couldn't find anyone :(

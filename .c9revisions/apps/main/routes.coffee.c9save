@@ -1,0 +1,2 @@
+{"ts":1344845299524,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1344845585083,"patch":[[{"diffs":[[1,"\nroutes = (app)->\n    app.get \"/\", (req, res)->\n        res.render \"index\", title:\"Express\"\n\nmodule.exports = routes"]],"start1":0,"start2":0,"length1":0,"length2":116}]],"length":116,"saved":false}

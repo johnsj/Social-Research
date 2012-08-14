@@ -3,10 +3,15 @@
  * Module dependencies.
  */
 
+require("coffee-script");
+require("express-namespace");
+
 var express = require('express')
-  , routes = require('./routes')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , mongoose = require("mongoose");
+  
+mongoose.connect("mongodb://social:Qwer5tgb@alex.mongohq.com:10013/social-research");
 
 var app = express();
 
@@ -19,6 +24,9 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
+  
+  app.use(require("connect-assets")());
+  
   app.use(require('stylus').middleware(__dirname + '/public'));
   app.use(express.static(path.join(__dirname, 'public')));
 });
@@ -27,7 +35,8 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
+require("./apps/main/routes")(app);
+require("./apps/risk_management/routes")(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

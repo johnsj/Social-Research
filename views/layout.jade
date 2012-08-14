@@ -2,6 +2,11 @@ doctype 5
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    != css("style")
+    block styles
+    block scripts
   body
     block content
+    
+    block footer-scripts
+    block template-scripts

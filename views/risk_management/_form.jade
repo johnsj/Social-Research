@@ -1,0 +1,19 @@
+script(type="text/template", id="category-form-template")
+  h4.form-heading New Category
+  table.form
+    tr
+      td
+        label(for="category-title") Title:
+      td
+        input(type="text", id="category-title", name="category-title")
+    tr
+      td
+        label(for="category-description") Description:
+      td
+        input(type="text", id="category-description", name="category-description")
+    tr
+      td
+        label(for="category-parent") Parent Category:
+      td
+        select
+          option(value="no-parent") No Parent

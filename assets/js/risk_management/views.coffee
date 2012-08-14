@@ -35,12 +35,11 @@ jQuery ->
   
   class CategoriesView extends Backbone.View
   
-    el: $ "div#container"
+    el: $ "div#category-container"
   
     render:->
       window.app.NewCategoryView = new NewCategoryView
       $('#category-form-container').html window.app.NewCategoryView.render().el
-      $(@el).append '<button>Add List Item</button>'
       $(@el).append '<ul class="categories"></ul>'
   
     initialize:->
@@ -68,10 +67,6 @@ jQuery ->
     repopulate: ()->
       $('ul.categories').empty()
       @appendItem model for model in @collection.models
-      
-      
-    events: 
-      "click button": "addItem"
       
   window.app = window.app || {}
   window.app.CategoriesView = CategoriesView

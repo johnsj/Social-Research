@@ -3,8 +3,8 @@ Category = require "./../../models/risk_management/category"
 routes = (app)->
   app.namespace "/risks", ()->
     
-    app.get "/", (req, res)->
-      res.render "risk_management/index", title: "Risk Management: Dashboard"
+    app.get "/categories", (req, res)->
+      res.render "risk_management/categories/index", title: "Risk Management: Categories"
   
   app.namespace "/api/risks", ()->
     app.get "/categories", (req, res)->

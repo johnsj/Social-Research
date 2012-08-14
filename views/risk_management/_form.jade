@@ -17,3 +17,6 @@ script(type="text/template", id="category-form-template")
       td
         select
           option(value="no-parent") No Parent
+          <% _.each(models, function(model){ %>
+          option(value="<%=model.attributes._id%>") <%= model.attributes.title%>
+          <% })%>

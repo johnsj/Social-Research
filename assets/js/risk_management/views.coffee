@@ -10,6 +10,11 @@ jQuery ->
     
     initialize: ->
       _.bindAll @
+
+      @collection = new window.app.CategoryParents
+      @collection.fetch()
+
+      @collection.bind 'reset', @render
       
     render: ->
       $(@el).html @template {models: @collection.models}
@@ -33,7 +38,8 @@ jQuery ->
     el: $ "div#container"
   
     render:->
-      $('#category-form-container').html new NewCategoryView({collection: @collection}).render().el
+      window.app.NewCategoryView = new NewCategoryView
+      $('#category-form-container').html window.app.NewCategoryView.render().el
       $(@el).append '<button>Add List Item</button>'
       $(@el).append '<ul class="categories"></ul>'
   

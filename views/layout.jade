@@ -2,14 +2,11 @@ doctype 5
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    // [if lt IE 9]
-      script(src="//html5shim.googlecode.com/svn/trunk/html5.js")
+    != css("style")
+    block styles
+    block scripts
   body
-    #outer_wrapper
-      header
-        #top_area
-        nav#top_menu
-          include partials/_topmenu
-      #content
-        block content
+    block content
+    
+    block footer-scripts
+    block template-scripts

@@ -1,0 +1,5 @@
+{"ts":1344863396074,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"window.app = window.app || {}\n#= require_tree risk_management\njQuery ->\n  console.log window.app.Categories.fetch"]],"start1":0,"start2":0,"length1":0,"length2":113}]],"length":113}
+{"contributors":[],"silentsave":false,"ts":1344939115634,"patch":[[{"diffs":[[0,"p || {}\n"],[1,"_.templateSettings =\n  interpolate : /\\{\\{(.+?)\\}\\}/g\n"],[0,"#= requi"]],"start1":22,"start2":22,"length1":16,"length2":70}]],"length":167,"saved":false}
+{"ts":1344939810807,"patch":[[{"diffs":[[0,">\n  "],[-1,"console.log window.app.Categories.fetch"]],"start1":124,"start2":124,"length1":43,"length2":4}]],"length":128,"saved":false}
+{"ts":1344939816385,"patch":[[{"diffs":[[0,"ry ->\n  "],[1,"console.log window.app.Categories.fetch()"]],"start1":120,"start2":120,"length1":8,"length2":49}]],"length":169,"saved":false}
+{"ts":1344939828148,"patch":[[{"diffs":[[0,">\n  "],[-1,"console.log window.app.Categories.fetch()"]],"start1":124,"start2":124,"length1":45,"length2":4}]],"length":128,"saved":false}

@@ -6,6 +6,6 @@ CategorySchema = new mongoose.Schema
   parent: mongoose.Schema.ObjectId,
   isParent: Boolean
   
-Category = mongoose.model "todo", CategorySchema, "Categories"
+Category = mongoose.model "Category", CategorySchema, "Categories"
 
 module.exports = Category

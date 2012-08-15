@@ -1,10 +1,10 @@
-extends ../../layout
+extends ../layout
 
 block scripts
   != js("jquery-1.8.0.min")
   != js("underscore-min")
   != js("backbone-min")
-  != js("application.js")
+  != js("application")
 
 block content
   h1= title
@@ -16,7 +16,6 @@ block content
 
 block template-scripts
   script(type="text/template", id="category-template")
-    div#category-single
-      span <%=title%>
-      span <%=description%>
+      td <%=title%>
+      td <%=description%>
   include _form

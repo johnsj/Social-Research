@@ -13,10 +13,13 @@ script(type="text/template", id="category-form-template")
         input(type="text", id="category-description", name="category-description")
     tr
       td
+        label(for="category-isParent") Is parent?:
+      td
+        input(type="checkbox", id="category-isParent", name="category-isParent")
+    tr
+      td
         label(for="category-parent") Parent Category:
       td
-        select
+        select#category-parent
           option(value="no-parent") No Parent
-          <% _.each(models, function(model){ %>
-          option(value="<%=model.attributes._id%>") <%= model.attributes.title%>
-          <% })%>
+  button#add-item Add new category

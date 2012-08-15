@@ -13,12 +13,11 @@ routes = (app)->
           res.json categories
         else
           res.send 404, err
-
-    app.post "/categories", (req, res)->
-      Category.create req.body, (err)->
+    app.get "/categories/parents", (req, res)->
+      Category.find {isParent: true}, (err, categories)->
         if !err
-          res.send 200, "OK"
+          res.json categories
         else
-          res.send 404, "Something went wrong"
+          res.send 404, err
 
 module.exports = routes

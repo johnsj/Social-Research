@@ -1,9 +1,9 @@
-@app = @app || {}
-
-class Category extends Backbone.Model
+jQuery ->
+  class Category extends Backbone.Model
+    
+    defaults:
+      title: "Some title",
+      description: "Some description"
   
-  defaults:
-    title: "Some title",
-    description: "Some description"
-
-@app.Category = Category
+  window.app = window.app || {}
+  window.app.Category = Category

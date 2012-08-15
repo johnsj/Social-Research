@@ -1,6 +1,4 @@
-@app = window.app || {}
-#= require risk_management/models
-#= require risk_management/collections
-#= require risk_management/views
+window.app = window.app || {}
+#= require_tree risk_management
 jQuery ->
   

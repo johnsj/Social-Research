@@ -1,11 +1,11 @@
-Category = require "./../../models/risk_management/category"
-ParentCategory = require "./../../models/risk_management/meta_category"
+Category = require "./models/category_model"
+ParentCategory = require "./models/parent_category_model"
 
 routes = (app)->
   app.namespace "/risks", ()->
     
     app.get "/categories", (req, res)->
-      res.render "risk_management/categories/index", title: "Risk Management: Categories"
+      res.render "risk_management/categories/index", title: "Risk Management - Categories"
   
   app.namespace "/api/risks", ()->
     app.get "/parent-categories", (req, res)->
@@ -20,7 +20,7 @@ routes = (app)->
           res.json categories
         else
           res.send 404, err
-    app.post "categories", (req, res)->
+    app.post "/categories", (req, res)->
       console.log req.body
       Category.create req.body, (err)->
         if !err

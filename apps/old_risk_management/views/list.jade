@@ -1,0 +1,12 @@
+extends ../../../views/layout
+
+block content
+  h1= title
+  p All of the categories: #{categories.length}
+  - if(categories.length)
+    ul.categories
+      - for( var category in categories ){
+        li #{categories[category].name}
+      - }
+  - else
+    p Couldn't find anyone :(

@@ -6,14 +6,12 @@ html
     block styles
     block scripts
   body
+    block body-scripts
     #outer-wrapper
       nav
         ul.navigation
-          li
-            a(href="#parents", id="parent-categories") Parent Categories
-          li
-            a(href="#children", id="categories") Categories
+          block navigation
       block content
       
-    block footer-scripts
     block template-scripts
+    block footer-scripts

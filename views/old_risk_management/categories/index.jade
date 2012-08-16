@@ -1,0 +1,47 @@
+extends ../../layout
+
+block scripts
+  != js("application")
+
+block content
+  h1= title
+  p Welcome to #{title}
+  #container
+    
+
+block template-scripts
+  script(type="text/template" , id="categories-template")
+    #category-form-container
+    h4 Categories
+    #category-container
+  script(type="text/template", id="category-template")
+    table#categories
+      thead#category-header
+        tr
+          td Title
+          td Description
+          td Parent
+          td
+      tbody#category-content
+  script(type="text/template", id="parent-category-template")
+    table#categories
+      thead#category-header
+        tr
+          td Title
+          td Description
+          td
+          td
+      tbody#category-content
+  script(type="text/template", id="category-single-template")
+    tr
+      td <%=title%>
+      td <%=description%>
+      td <%=(parent)?parent:""%>
+      td
+  script(type="text/template", id="parent-category-single-template")
+    tr
+      td <%=title%>
+      td <%=description%>
+      td
+      td
+  include _form

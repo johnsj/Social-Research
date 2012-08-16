@@ -1,0 +1,43 @@
+script(type="text/template", id="risk-main-template")
+  #form-container
+  #table-container
+
+script(type="text/template", id="risk-list-table-template")
+  table#risk_list
+    thead
+      tr
+        th#risk_title Category Title
+        th#risk_description Description
+        th#risk_category Belongs to
+        th#actionButtons
+    tbody#risk_list_content
+
+script(type="text/template", id="risk-list-tablerow-template")
+  tr
+    td#risk_title {{ model.get('title') }}
+    td#risk_description {{ model.get('description') }}
+    td#risk_category {{ model.get('parent') }}
+    td#actionButtons
+      a(href="#") Show more
+      a(href="#") Edit
+      a(href="#") Delete
+
+script(type="text/template", id="risk-form-template")
+  table#risk_form
+    tr
+      th 
+        label(for="category_name") Category Title
+      th 
+        label(for="category_description") Category Description
+      th 
+        label(for="category_parent") Meta Category
+      th
+    tr
+      td#category_name
+        input(type="text", name="category_name", id="category_name")
+      td#category_description
+        textarea(name="category_description", id="category_description")
+      td#category_parent
+        select(type="text", name="category_parent", id="category_parent")
+      td#category_submit
+        button#add_category Add new category

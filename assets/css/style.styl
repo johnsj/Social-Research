@@ -1,17 +1,58 @@
 body
-  padding: 50px
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
 a
   color: #00B7FF
 
-table.form
+#outer-wrapper
+  width 940px
+  margin 0px auto
+
+nav ul.navigation
+  list-style none
+  padding 0px
+
+nav ul.navigation li
+  display inline
+  margin-right 15px
+
+table
   padding: 0px
   margin: 0px
   border-spacing: 0px
 
 table td
 table th
-  padding: 0px
+  padding 0px
+  margin 0px
+
+table#categories
+  width: 100%
+
+table#categories thead td
+  border-bottom 2px solid #333
+
+table#categories tbody td
+  border-bottom 1px solid #dedede
+  padding 5px 0px
+
+table#categories tbody tr:last-child td
+  border-bottom none
+
+table#categories thead td
+table#categories tbody td
+  width 25%
+
+table.form
+  width: 300px
+
+table.form td
+  width 50%
+
+table.form td input
+  width 95%
+
+button#add-item
+  width 100%
 
 .form-heading
   margin-bottom: 0px

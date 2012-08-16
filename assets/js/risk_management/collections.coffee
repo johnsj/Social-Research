@@ -1,14 +1,13 @@
 window.app = window.app || {}
 #= require models
-jQuery ->
-  class Categories extends Backbone.Collection
-    model: window.app.Category
-    url: "/api/risks/categories"
-    
-  window.app.Categories = Categories
 
-  class CategoryParents extends Backbone.Collection
-    model: window.app.Category
-    url: "/api/risks/categories/parents"
+class Categories extends Backbone.Collection
+  model: window.app.Category
+  url: "/api/risks/categories"
 
-  window.app.CategoryParents = CategoryParents
+class ParentCategories extends Backbone.Collection
+  model: window.app.ParentCategory
+  url: "/api/risks/parent-categories"
+  
+window.app.categories = new Categories
+window.app.parentCategories = new ParentCategories

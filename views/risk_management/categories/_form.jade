@@ -15,8 +15,25 @@ script(type="text/template", id="category-form-template")
       td
         label(for="category-parent") Parent Category:
       td
-        select
-          option(value="no-parent") No Parent
-          <% _.each(models, function(model){ %>
-          option(value="<%=model.attributes._id%>") <%= model.attributes.title%>
-          <% })%>
+        select(name="category-parent", id="category-parent")
+          option
+    tr
+      td(colspan=2)
+        button#add-item Add Category
+
+script(type="text/template", id="parent-category-form-template")
+  h4.form-heading New Parent Category
+  table.form
+    tr
+      td
+        label(for="category-title") Title:
+      td
+        input(type="text", id="category-title", name="category-title")
+    tr
+      td
+        label(for="category-description") Description:
+      td
+        input(type="text", id="category-description", name="category-description")
+    tr
+      td(colspan=2)
+        button#add-item Add Category

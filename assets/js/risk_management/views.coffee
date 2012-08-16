@@ -1,73 +1,47 @@
-#= require collections
-#= require models
-
 jQuery ->
-  
-  class NewCategoryView extends Backbone.View
-    tagname: 'div'
-    
-    template: _.template $('#category-form-template').html()
-    
-    initialize: ->
-      _.bindAll @
+  window.app = window.app || {}
 
-      @collection = new window.app.CategoryParents
-      @collection.fetch()
+  class CategoryFormView extends Backbone.View
 
-      @collection.bind 'reset', @render
-      
-    render: ->
-      $(@el).html @template {models: @collection.models}
-      @
-  
+  window.app.CategoryFormView = CategoryFormView
+
+  class CategorySingleView extends Backbone.View
+
+    initialize:->
+      @el = $('tbody#category-content')
+      @template = _.template $('category-single-template')
+      @render
+
+    render:->
+      $(@el).append @template
+
   class CategoryView extends Backbone.View
-    tagName: 'div'
-
     template: _.template $('#category-template').html()
     
-    initialize: ->
-      _.bindAll @
-      
-    render: ->
-      $(@el).html @template @model.toJSON()
-      #$(@el).append $ "<span>#{@model.get 'title'} - #{@model.get 'description'}</span>"
-      @
-  
-  class CategoriesView extends Backbone.View
-  
-    el: $ "div#category-container"
-  
-    render:->
-      window.app.NewCategoryView = new NewCategoryView
-      $('#category-form-container').html window.app.NewCategoryView.render().el
-      $(@el).append '<ul class="categories"></ul>'
-  
     initialize:->
-      _.bindAll @
-      
-      @collection = new window.app.Categories
-      @collection.fetch()
-      
-      @collection.bind 'add', @appendItem
-      @collection.bind 'reset', @repopulate
-      
-      @counter = 0
+      @el = $('#category-container')
       @render()
-    
-    addItem: ->
-      @counter++
-      item = new window.app.Category
-      item.set title: "Title number #{@counter}"
-      @collection.add item
-      
-    appendItem: (item)->
-      item_view = new CategoryView {model: item}
-      $('ul.categories').append item_view.render().el
-      
-    repopulate: ()->
-      $('ul.categories').empty()
-      @appendItem model for model in @collection.models
-      
-  window.app = window.app || {}
+
+    render:->
+      $(@el).html @template
+      console.log @collection.models
+      @
+
+  window.app.CategoryView = CategoryView
+
+  class CategoriesView extends Backbone.View
+    el: $('#container')
+    template: _.template $('#categories-template').html()
+
+    initialize:->
+      @collection.fetch
+        success: ->
+          @categoryView = new window.app.CategoryView {collection: @collection}      
+      @render()
+
+    render:->
+      $(@el).html @template
+      @
+
+
   window.app.CategoriesView = CategoriesView
-  new window.app.CategoriesView

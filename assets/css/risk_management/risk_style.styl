@@ -3,6 +3,7 @@ table#risk_list
 
 table#risk_list thead tr th
   border-bottom #333 2px solid
+  text-align left
   padding 5px 0px
 
 table#risk_list tbody tr td
@@ -27,36 +28,39 @@ table#risk_list thead tr th#actionButtons
   width 200px
 
 table#risk_list tbody tr td#actionButtons a
+  color #00b7ff
   padding-left 10px
 
+table#risk_list tbody tr td#actionButtons a:hover
+  text-decoration underline
 
 //Form table
 
-#form-container
-
-table#risk_form
-  width 100%
-  margin-bottom 20px
+table#risk_form tr th
+table#risk_form tr td
+  border-top 1px solid #999
+  padding 5px 0px
 
 table#risk_form tr td
+  width 350px
+
+table#risk_form tr td input[type=text]
+  width 302px
+  line-height 18px
+  padding 5px
+  margin-left 5px
+
+table#risk_form tr td textarea
+  width 310px
+  height 150px
+  margin-left 5px
+
+table#risk_form tr th
+  text-align left
   vertical-align top
 
-table#risk_form tr td#category_name
-  width 250px
-
-table#risk_form tr td#category_name input
-  width 240px
-
-table#risk_form tr td#category_description textarea
-  width 350px
-  height 50px
-
-table#risk_form tr td#category_parent
-  width 200px
-
-table#risk_form tr td#category_parent select
-  width 100%
-
-table#risk_form tr td#category_submit
-  width 120px
-  text-align right
+table#risk_form tr td button
+  width 317px
+  height 28px
+  font-size 15px
+  margin-left 5px

@@ -1,43 +1,127 @@
+script(type="text/template", id="error-item-template")
+  li.error-item <%= msg%>
+    a(id="error-item-close") (X)
+
 script(type="text/template", id="risk-main-template")
   #form-container
   #table-container
+
+script(type="text/template", id="risk-meta-list-table-template")
+  table#risk_list
+    thead
+      tr
+        th#risk_title Category Title
+        th#actionButtons
+    tbody#risk_list_content
 
 script(type="text/template", id="risk-list-table-template")
   table#risk_list
     thead
       tr
         th#risk_title Category Title
-        th#risk_description Description
         th#risk_category Belongs to
         th#actionButtons
     tbody#risk_list_content
 
+script(type="text/template", id="risk-meta-list-tablerow-template")
+  td#risk_title <%= model.get('title') %>
+  td#actionButtons
+    <a id="showMore" href="#/metacategories/<%= model.get('_id')%>"> Show more
+    <a id="edit" href="#/metacategories/edit/<%= model.get('_id')%>"> Edit
+    <a id="delete" href="#/metacategories/delete/<%= model.get('_id')%>"> Delete
+
 script(type="text/template", id="risk-list-tablerow-template")
-  tr
-    td#risk_title {{ model.get('title') }}
-    td#risk_description {{ model.get('description') }}
-    td#risk_category {{ model.get('parent') }}
-    td#actionButtons
-      a(href="#") Show more
-      a(href="#") Edit
-      a(href="#") Delete
+  td#risk_title <%= model.get('title') %>
+  td#risk_category <%= model.get('parent').title %>
+  td#actionButtons
+    <a id="showMore" href="#/categories/<%= model.get('_id')%>"> Show more
+    <a id="edit" href="#/categories/edit/<%= model.get('_id')%>"> Edit
+    <a id="delete" href="#/categories/delete/<%= model.get('_id')%>"> Delete
 
 script(type="text/template", id="risk-form-template")
+  h3 Enter the information about the new category
+  #errorbox
+    ul#errorlist
   table#risk_form
     tr
       th 
         label(for="category_name") Category Title
-      th 
-        label(for="category_description") Category Description
-      th 
-        label(for="category_parent") Meta Category
-      th
-    tr
       td#category_name
         input(type="text", name="category_name", id="category_name")
+    tr
+      th 
+        label(for="category_description") Category Description
       td#category_description
         textarea(name="category_description", id="category_description")
+    tr
+      th 
+        label(for="category_parent") Meta Category
       td#category_parent
         select(type="text", name="category_parent", id="category_parent")
+    tr
+      th
+      td#category_submit
+        button#add_category Add new category
+script(type="text/template", id="risk-meta-edit-template")
+  h3 Edit the information for the current category
+  #errorbox
+    ul#errorlist
+  table#risk_form
+    tr
+      th 
+        label(for="category_name") Category Title
+      td#category_name
+        <input type="text" name="category_name" id="category_name" value="<%= model.get('title')%>">
+    tr
+      th 
+        label(for="category_description") Category Description
+      td#category_description
+        textarea(name="category_description", id="category_description") <%= model.get('description') %>
+    tr
+      th
+      td#category_submit
+        button#save_category Save category
+script(type="text/template", id="risk-edit-template")
+  h3 Edit the information for the current category
+  #errorbox
+    ul#errorlist
+  table#risk_form
+    tr
+      th 
+        label(for="category_name") Category Title
+      td#category_name
+        <input type="text" name="category_name" id="category_name" value="<%= model.get('title')%>">
+    tr
+      th 
+        label(for="category_description") Category Description
+      td#category_description
+        textarea(name="category_description", id="category_description") <%= model.get('description') %>
+    tr
+      th 
+        label(for="category_parent") Meta Category
+      td#category_parent
+        select(type="text", name="category_parent", id="category_parent")
+    tr
+      th
+      td#category_submit
+        button#save_category Save category
+
+script(type="text/template", id="risk-meta-form-template")  
+  h3 Enter the information about the new category
+  #errorbox
+    ul#errorlist
+  table#risk_form
+    tr
+      th 
+        label(for="category_name") Category Title
+      td#category_name
+        input(type="text", name="category_name", id="category_name")
+    tr
+      th 
+        label(for="category_description") Category Description
+      td#category_description
+        textarea(name="category_description", id="category_description")
+    tr
+      th
       td#category_submit
         button#add_category Add new category

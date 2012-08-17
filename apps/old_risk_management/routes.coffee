@@ -5,7 +5,7 @@ routes = (app)->
   app.namespace "/risks", ()->
     
     app.get "/categories", (req, res)->
-      res.render "risk_management/categories/index", title: "Risk Management - Categories"
+      res.render "risk_management/categories/index", title: "Risk Management"
   
   app.namespace "/api/risks", ()->
     app.get "/parent-categories", (req, res)->

@@ -9,8 +9,16 @@ CategorySchema = new mongoose.Schema
     type: String
     required: true
   description: String
-  parent: {type:mongoose.Schema.ObjectId, ref: 'ParentCategory', default: null}
+  parent:
+    type:mongoose.Schema.ObjectId
+    ref: 'ParentCategory'
+    required: true
   
 Category = mongoose.model "Category", CategorySchema, "Categories"
+
+Category.schema.path('parent').validate (value)->
+  if value is null
+    return false
+  return true
 
 module.exports = Category

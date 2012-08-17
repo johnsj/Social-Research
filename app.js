@@ -40,7 +40,7 @@ app.configure('test', function (){
   app.use('port', process.env.PORT + 1 || 3001);
 });
 
-require("./apps/main/routes")(app);
+
 require("./apps/risk_management/routes")(app);
 
 http.createServer(app).listen(app.get('port'), function(){

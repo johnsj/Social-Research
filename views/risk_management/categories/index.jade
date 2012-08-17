@@ -8,12 +8,18 @@ block scripts
 
 block navigation
   li
-    a(href="#parents", id="parent-categories") Meta Categories
+    a(href="#/metacategories", id="parent-categories") Meta Categories
+    ul.submenu
+      li
+        a(href="#/metacategories/new") New Meta Category
   li
-    a(href="#children", id="categories") Categories
+    a(href="#/categories", id="categories") Categories
+    ul.submenu
+      li
+        a(href="#/categories/new") New Category
 
 block content
-  h1= title
+  h1#page-title= title
   #main-container
     #main-view
 

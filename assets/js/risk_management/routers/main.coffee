@@ -17,6 +17,7 @@ class MainRouter extends Backbone.Router
 
   initialize:->
     @collection = window.Risk.collections.Categories
+    @collection.fetch()
     @metacollection = window.Risk.collections.MetaCategories
 
   categories:()->
@@ -53,5 +54,12 @@ class MainRouter extends Backbone.Router
       success:->  
         metaCategoriesView = window.Risk.views.MetaCategoriesView
         window.Application.showView metaCategoriesView
+
+  category:(id)->
+    @collection.fetch
+      success:(collection, response)->
+        model = collection.where({_id:id})[0]
+        formView = window.Risk.views.CategoryDetailView
+        window.Application.showView formView, {model: model}
 
 window.Risk.routers.MainRouter = MainRouter

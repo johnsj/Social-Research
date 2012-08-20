@@ -125,3 +125,7 @@ script(type="text/template", id="risk-meta-form-template")
       th
       td#category_submit
         button#add_category Add new category
+script(type="text/template", id="category-detail-template")
+  h3#category-title <%= model.get('title') %>
+  p#category-description <%= model.get('description') %>
+  #parent-detail <%= model.get('parent').title %> <%= model.get('parent').description %>

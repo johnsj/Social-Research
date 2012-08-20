@@ -1,0 +1,30 @@
+{"ts":1345467227323,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":true,"ts":1345467234531,"patch":[[{"diffs":[[1,"mongoose = require \"mongoose\"\n\nParentCategorySchema = new mongoose.Schema\n  title: String\n  description:String\n\nCategorySchema = new mongoose.Schema\n  title: \n    type: String\n    required: true\n  description: String\n  parent:\n    type:mongoose.Schema.ObjectId\n    ref: 'ParentCategory'\n    required: true\n  \nCategory = mongoose.model \"Category\", CategorySchema, \"Categories\"\n\nCategory.schema.path('parent').validate (value)->\n  if value is null\n    return false\n  return true\n\nmodule.exports = Category"]],"start1":0,"start2":0,"length1":0,"length2":503}]],"length":503,"saved":false}
+{"ts":1345467239867,"patch":[[{"diffs":[[0,"e\"\n\n"],[-1,"ParentCategorySchema = new mongoose.Schema\n  title: String\n  description:String\n\n"],[0,"Cate"]],"start1":27,"start2":27,"length1":89,"length2":8}]],"length":422,"saved":false}
+{"ts":1345467242247,"patch":[[{"diffs":[[0,"goose\"\n\n"],[1,"ParentCategorySchema = new mongoose.Schema\n  title: String\n  description:String\n\n"],[0,"Category"]],"start1":23,"start2":23,"length1":16,"length2":97}]],"length":503,"saved":false}
+{"ts":1345467251505,"patch":[[{"diffs":[[0,"e\"\n\n"],[-1,"ParentCategorySchema = new mongoose.Schema\n  title: String\n  description:String\n\n"],[0,"Cate"]],"start1":27,"start2":27,"length1":89,"length2":8}]],"length":422,"saved":false}
+{"ts":1345467258729,"patch":[[{"diffs":[[0,"f: '"],[-1,"Parent"],[0,"Cate"]],"start1":186,"start2":186,"length1":14,"length2":8}]],"length":416,"saved":false}
+{"ts":1345467270334,"patch":[[{"diffs":[[0,"goose\"\n\n"],[-1,"Category"],[1,"\n"],[0,"Schema ="]],"start1":23,"start2":23,"length1":24,"length2":17}]],"length":409,"saved":false}
+{"ts":1345467271899,"patch":[[{"diffs":[[0,"goose\"\n\n"],[-1,"\n"],[1,"Te"],[0,"Schema ="]],"start1":23,"start2":23,"length1":17,"length2":18}]],"length":410,"saved":false}
+{"ts":1345467273167,"patch":[[{"diffs":[[0,"ose\"\n\nTe"],[1,"xts"],[0,"Schema ="]],"start1":25,"start2":25,"length1":16,"length2":19}]],"length":413,"saved":false}
+{"ts":1345467278162,"patch":[[{"diffs":[[0,"true\n  \n"],[-1,"Category"],[1,"Te"],[0," = mongo"]],"start1":211,"start2":211,"length1":24,"length2":18}]],"length":407,"saved":false}
+{"ts":1345467279139,"patch":[[{"diffs":[[0,"ue\n  \nTe"],[1,"x"],[0," = mongo"]],"start1":213,"start2":213,"length1":16,"length2":17}]],"length":408,"saved":false}
+{"ts":1345467280101,"patch":[[{"diffs":[[0,"e\n  \nTex"],[1,"ts"],[0," = mongo"]],"start1":214,"start2":214,"length1":16,"length2":18}]],"length":410,"saved":false}
+{"ts":1345467282807,"patch":[[{"diffs":[[0,"\n  \nText"],[-1,"s"],[0," = mongo"]],"start1":215,"start2":215,"length1":17,"length2":16}]],"length":409,"saved":false}
+{"ts":1345467284865,"patch":[[{"diffs":[[0,"e\"\n\nText"],[-1,"s"],[0,"Schema ="]],"start1":27,"start2":27,"length1":17,"length2":16}]],"length":408,"saved":false}
+{"ts":1345467292490,"patch":[[{"diffs":[[0,".model \""],[-1,"Category"],[1,"Text"],[0,"\", Categ"]],"start1":233,"start2":233,"length1":24,"length2":20}]],"length":404,"saved":false}
+{"ts":1345467296226,"patch":[[{"diffs":[[0,"\"Text\", "],[-1,"Category"],[1,"Text"],[0,"Schema, "]],"start1":240,"start2":240,"length1":24,"length2":20}]],"length":400,"saved":false}
+{"ts":1345467298710,"patch":[[{"diffs":[[0,"a, \""],[-1,"Categories"],[1,"t"],[0,"\"\n\nC"]],"start1":257,"start2":257,"length1":18,"length2":9}]],"length":391,"saved":false}
+{"ts":1345467299500,"patch":[[{"diffs":[[0,"chema, \""],[-1,"t"],[0,"\"\n\nCateg"]],"start1":253,"start2":253,"length1":17,"length2":16}]],"length":390,"saved":false}
+{"ts":1345467300678,"patch":[[{"diffs":[[0,"chema, \""],[1,"Tex"],[0,"\"\n\nCateg"]],"start1":253,"start2":253,"length1":16,"length2":19}]],"length":393,"saved":false}
+{"ts":1345467301803,"patch":[[{"diffs":[[0,"ma, \"Tex"],[1,"ts"],[0,"\"\n\nCateg"]],"start1":256,"start2":256,"length1":16,"length2":18}]],"length":395,"saved":false}
+{"ts":1345467307895,"patch":[[{"diffs":[[0,"Texts\"\n\n"],[-1,"Category"],[1,"Te"],[0,".schema."]],"start1":261,"start2":261,"length1":24,"length2":18}]],"length":389,"saved":false}
+{"ts":1345467310290,"patch":[[{"diffs":[[0,"xts\"\n\nTe"],[1,"ct"],[0,".schema."]],"start1":263,"start2":263,"length1":16,"length2":18}]],"length":391,"saved":false}
+{"ts":1345467311276,"patch":[[{"diffs":[[0,"xts\"\n\nTe"],[-1,"ct"],[1,"x"],[0,".schema."]],"start1":263,"start2":263,"length1":18,"length2":17}]],"length":390,"saved":false}
+{"ts":1345467312115,"patch":[[{"diffs":[[0,"ts\"\n\nTex"],[1,"t"],[0,".schema."]],"start1":264,"start2":264,"length1":16,"length2":17}]],"length":391,"saved":false}
+{"ts":1345467323299,"patch":[[{"diffs":[[0,"ription:"],[-1," String"],[1,"\n    "],[0,"\n  paren"]],"start1":116,"start2":116,"length1":23,"length2":21}]],"length":389,"saved":false}
+{"ts":1345467325952,"patch":[[{"diffs":[[0,"on:\n    "],[1,"type: S"],[0,"\n  paren"]],"start1":121,"start2":121,"length1":16,"length2":23}]],"length":396,"saved":false}
+{"ts":1345467327526,"patch":[[{"diffs":[[0," type: S"],[1,"tring\n    "],[0,"\n  paren"]],"start1":128,"start2":128,"length1":16,"length2":26}]],"length":406,"saved":false}
+{"ts":1345467330409,"patch":[[{"diffs":[[0,"ing\n    "],[1,"required: "],[0,"\n  paren"]],"start1":138,"start2":138,"length1":16,"length2":26}]],"length":416,"saved":false}
+{"ts":1345467331830,"patch":[[{"diffs":[[0,"quired: "],[1,"true"],[0,"\n  paren"]],"start1":148,"start2":148,"length1":16,"length2":20}]],"length":420,"saved":false}
+{"ts":1345467340855,"patch":[[{"diffs":[[0,"ports = "],[-1,"Category"],[1,"Text"]],"start1":404,"start2":404,"length1":16,"length2":12}]],"length":416,"saved":false}

@@ -2,8 +2,9 @@ Category = require "./models/category_model"
 ParentCategory = require "./models/parent_category_model"
 
 routes = (app)->
-  app.get "/", (req, res)->
-    res.render "risk_management/categories/index", title: "Risk Management"
+  app.namespace "/risk_management", ()->
+    app.get "/", (req, res)->
+      res.render "risk_management/categories/index", title: "Risk Management"
   
   app.namespace "/api/risks", ()->
     app.get "/meta-categories", (req, res)->

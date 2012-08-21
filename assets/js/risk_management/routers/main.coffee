@@ -16,12 +16,17 @@ class MainRouter extends Backbone.Router
     "texts/new": "formText"
     "texts/:id": "text"
     "texts/edit/:id": "editText"
+    "probabilities": "probabilities"
+    "probabilities/new": "formProbability"
+    "probabilities/:id": "probability"
+    "probabilities/edit/:id": "editProbability"
 
   initialize:->
     @collection = window.Risk.collections.Categories
     @collection.fetch()
     @metacollection = window.Risk.collections.MetaCategories
     @textcollection = window.Risk.collections.Texts
+    @probabilitycollection = window.Risk.collections.Probabilities
 
   categories:()->
     @collection.fetch
@@ -94,6 +99,30 @@ class MainRouter extends Backbone.Router
       success:(collection, response)=>
         model = collection.where({_id: id})[0]
         editView = window.Risk.views.TextEditView
+        window.Application.showView editView, {model:model}
+
+  probabilities:()->
+    @probabilitycollection.fetch
+      success:->  
+        newView = window.Risk.views.ProbabilitiesView
+        window.Application.showView newView
+
+  probability:(id)->
+    @probabilitycollection.fetch
+      success:(collection, response)->
+        model = collection.where({_id:id})[0]
+        formView = window.Risk.views.ProbabilityDetailView
+        window.Application.showView formView, {model: model}
+
+  formProbability:()->
+    formView = window.Risk.views.ProbabilityFormView
+    window.Application.showView formView 
+
+  editProbability:(id)->
+    @probabilitycollection.fetch
+      success:(collection, response)=>
+        model = collection.where({_id: id})[0]
+        editView = window.Risk.views.ProbabilityEditView
         window.Application.showView editView, {model:model}
 
 window.Risk.routers.MainRouter = MainRouter

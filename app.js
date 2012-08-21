@@ -42,6 +42,9 @@ app.configure('test', function (){
 
 
 require("./apps/risk_management/routes")(app);
+require("./apps/risk_management/routes/api-metacategories")(app);
+require("./apps/risk_management/routes/api-categories")(app);
+require("./apps/risk_management/routes/api-texts")(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

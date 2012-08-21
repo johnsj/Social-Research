@@ -1,0 +1,75 @@
+script(type="text/template", id="text-main-template")
+  #form-container
+  #table-container
+
+script(type="text/template", id="text-list-table-template")
+  table.item_list#text_list
+    thead
+      tr
+        th#text_title Text Title
+        th#text_category Belongs to
+        th#actionButtons
+    tbody#text_list_content
+
+script(type="text/template", id="text-list-tablerow-template")
+  td#text_title <%= model.get('title') %>
+  td#text_category <%= model.get('category').title %>
+  td#actionButtons
+    <a id="showMore" href="#/texts/<%= model.get('_id')%>"> Show more
+    <a id="edit" href="#/texts/edit/<%= model.get('_id')%>"> Edit
+    <a id="delete" href="#/texts/delete/<%= model.get('_id')%>"> Delete
+
+script(type="text/template", id="text-form-template")
+  h3 Enter the information about the new text
+  #errorbox
+    ul#errorlist
+  table.item_form#text_form
+    tr
+      th 
+        label(for="text_name") Text Title
+      td#text_name
+        input(type="text", name="text_name", id="text_name")
+    tr
+      th 
+        label(for="text_description") Text content
+      td#text_description
+        textarea(name="text_description", id="text_description")
+    tr
+      th 
+        label(for="text_parent") Category
+      td#text_parent
+        select(type="text", name="text_parent", id="text_parent")
+    tr
+      th
+      td#text_submit
+        button#add_text Add new text
+
+script(type="text/template", id="text-edit-template")
+  h3 Edit the information for the current text
+  #errorbox
+    ul#errorlist
+  table.item_form#risk_form
+    tr
+      th 
+        label(for="text_name") Text Title
+      td#category_name
+        <input type="text" name="text_name" id="text_name" value="<%= model.get('title')%>">
+    tr
+      th 
+        label(for="text_description") Text content
+      td#category_description
+        textarea(name="text_description", id="text_description") <%= model.get('description') %>
+    tr
+      th 
+        label(for="text_category") Category
+      td#category_parent
+        select(type="text", name="text_category", id="text_category")
+    tr
+      th
+      td#category_submit
+        button#save_text Save text
+
+script(type="text/template", id="text-detail-template")
+  h3#text-title <%= model.get('title') %>
+  p#text-description <%= model.get('description') %>
+  .item_detail#category-detail <%= model.get('category').title %> <%= model.get('category').description %>

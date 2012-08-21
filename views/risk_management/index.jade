@@ -1,4 +1,4 @@
-extends ../../layout
+extends ../layout
 
 block styles
   != css("risk_management/risk_style")
@@ -17,6 +17,11 @@ block navigation
     ul.submenu
       li
         a(href="#/categories/new") New Category
+  li
+    a(href="#/texts", id="texts") Texts
+    ul.submenu
+      li
+        a(href="#/texts/new") New Text
 
 block content
   h1#page-title= title
@@ -24,4 +29,6 @@ block content
     #main-view
 
 block template-scripts
-  include includes/templates
+  include categories/includes/templates
+  include metacategories/includes/templates
+  include texts/includes/templates

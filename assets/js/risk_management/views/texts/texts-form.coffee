@@ -2,45 +2,45 @@ window.Risk = window.Risk || {}
 window.Risk.views = window.Risk.views || {}
 
 
-class CategoryFormView extends Backbone.View
+class TextFormView extends Backbone.View
   
   tagName: "div"
 
   initialize:->
     _.bindAll @
-    @collection = window.Risk.collections.Categories
-    @template = _.template $('#risk-form-template').html()
-    @metaCollection = window.Risk.collections.MetaCategories
-    @metaCollection.bind 'reset', @addOptions
+    @collection = window.Risk.collections.Texts
+    @template = _.template $('#text-form-template').html()
+    @categoryCollection = window.Risk.collections.Categories
+    @categoryCollection.bind 'reset', @addOptions
 
   render:->
     $(@el).html @template
-    @renderMetaOptions()
+    @renderCategoryOptions()
 
 
-  renderMetaOptions:->
-    @metaCollection.fetch()
+  renderCategoryOptions:->
+    @categoryCollection.fetch()
 
   addOptions:->
-    $(@el).find('select#category_parent').empty()
-    _.each @metaCollection.models, (model)=>
+    $(@el).find('select#text_parent').empty()
+    _.each @categoryCollection.models, (model)=>
       @addOption model
 
   addOption:(model)->
-    $(@el).find('select#category_parent').append $('<option>').prop('value', model.get('_id')).text(model.get('title'))
+    $(@el).find('select#text_parent').append $('<option>').prop('value', model.get('_id')).text(model.get('title'))
 
   events:
-    "click button#add_category": "save"
+    "click button#add_text": "save"
     "click a#error-item-close": "hideError"
 
   save:(event)->
-    title = $('input#category_name').val() unless $('input#category_name').val() is ""
-    description = $('textarea#category_description').val()
-    parent = $('select#category_parent option:selected').val()
+    title = $('input#text_name').val() unless $('input#text_name').val() is ""
+    description = $('textarea#text_description').val()
+    category = $('select#text_parent option:selected').val()
     saveData =
       title: title
       description: description
-      parent: parent
+      category: category
     #@collection.create saveData
     newModel = new @collection.model
 
@@ -56,9 +56,9 @@ class CategoryFormView extends Backbone.View
       wait: true
       error:(model, response)->
         if response.status is 200
-          window.location.hash = "/categories"
+          window.location.hash = "/texts"
       success:(model, response)->
-        window.location.hash = "/categories"
+        window.location.hash = "/texts"
 
     newModel.save saveData, saveOptions
 
@@ -70,4 +70,4 @@ class CategoryFormView extends Backbone.View
     $(event.target.parentElement).remove()
     
 
-window.Risk.views.CategoryFormView = CategoryFormView
+window.Risk.views.TextFormView = TextFormView

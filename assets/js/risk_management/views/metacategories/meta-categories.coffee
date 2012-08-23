@@ -8,8 +8,8 @@ class MetaCategoriesView extends Backbone.View
 
   initialize:->
     _.bindAll @
-    @template = _.template $('#risk-main-template').html()
-    @table_template = _.template $('#risk-meta-list-table-template').html()
+    @template = _.template $('#main-template').html()
+    @table_template = _.template $('#meta-category-list-table-template').html()
 
     @collection = window.Risk.collections.MetaCategories
     @collection.bind "remove", @render, @
@@ -19,7 +19,7 @@ class MetaCategoriesView extends Backbone.View
     $(@el).find(@table_el).html @table_template
     _.each @collection.models, (model)=>
       itemView = new window.Risk.views.MetaCategoryView({model: model})
-      $(@el).find("tbody#risk_list_content").append itemView.render().el
+      $(@el).find("tbody#meta_category_list_content").append itemView.render().el
     @
 
 window.Risk.views.MetaCategoriesView = MetaCategoriesView

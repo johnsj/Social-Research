@@ -8,9 +8,12 @@ html
   body
     block body-scripts
     #outer-wrapper
-      nav
-        ul.navigation
-          block navigation
+      header
+        .logo
+          h1= title
+        nav
+          ul.navigation
+            block navigation
       block content
       
     block template-scripts

@@ -7,5 +7,11 @@ class MetaCategory extends Backbone.Model
 
   idAttribute: '_id'
 
+  initialize:->
+    @FormSchema=
+      title: 
+        type: "text"
+      description: 
+        type: "textarea"
 
 window.Risk.models.MetaCategory = MetaCategory

@@ -7,6 +7,19 @@ class Text extends Backbone.Model
 
   idAttribute: '_id'
 
+  initialize:->
+    @FormSchema =
+      title: 
+        type: "text"
+      description: 
+        type: "textarea"
+      category: 
+        type: "select"
+        ref: @get "category"
+        collection: window.Risk.collections.Categories
+        key: "_id"
+
+
 
 
 window.Risk.models.Text = Text

@@ -7,37 +7,30 @@ class CategoryEditView extends Backbone.View
   tagName: "div"
 
   initialize:->
+    _.extend @, Backbone.FormView
     _.bindAll @
     @collection = window.Risk.collections.Categories
     @collection.bind "change", @render, @
-    @template = _.template $('#risk-edit-template').html()
-    @metaCollection = window.Risk.collections.MetaCategories
-    @metaCollection.bind 'reset', @addOptions
+    @template = _.template $('#form-template').html()
+    @parentCollection = window.Risk.collections.MetaCategories
+    @parentCollection.bind 'reset', @render, @
+    @parentCollection.fetch()
 
   render:->
-    $(@el).html @template {model: @model}
-    @renderMetaOptions()
-
-
-  renderMetaOptions:->
-    @metaCollection.fetch()
-
-  addOptions:->
-    _.each @metaCollection.models, (model)=>
-      @addOption model
-
-  addOption:(model)->
-    if @model.attributes.parent._id is model.get('_id')
-      $(@el).find('select#category_parent').append $('<option>').prop('value', model.get('_id')).prop('selected', true).text(model.get('title'))
-    else
-      $(@el).find('select#category_parent').append $('<option>').prop('value', model.get('_id')).text(model.get('title'))
+    input=
+      header: "Edit Category"
+    $(@el).html @template {input:input}
+    formConfig=
+      identifier: "category"
+      submitText: "Add new Category"
+    @renderForm(formConfig)
 
   events:
-    "click button#save_category": "save"
+    "click button.form_submit": "save"
     "click a#error-item-close": "hideError"
 
   save:(event)->
-    title = $('input#category_name').val() unless $('input#category_name').val() is ""
+    title = $('input#category_title').val() unless $('input#category_title').val() is ""
     description = $('textarea#category_description').val()
     parent = $('select#category_parent option:selected').val()
     saveData =
@@ -47,14 +40,14 @@ class CategoryEditView extends Backbone.View
     #@collection.create saveData
 
     @model.on "error", (model, response)=>
+      console.log response
       if response.status isnt 200
         @showErrorBox response
-
-    console.log @model.url()
 
     saveOptions =
       wait: true
       error:(model, response)->
+        console.log response
         if response.status is 200
           window.location.hash = "/categories"
       success:(model, response)->
@@ -69,6 +62,5 @@ class CategoryEditView extends Backbone.View
 
   hideError:(event)->
     $(event.target.parentElement).remove()
-    
 
 window.Risk.views.CategoryEditView = CategoryEditView

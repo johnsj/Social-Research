@@ -8,7 +8,7 @@ class MetaCategoryView extends Backbone.View
   
   initialize:->
     _.bindAll @
-    @template = _.template $('#risk-meta-list-tablerow-template').html()
+    @template = _.template $('#meta-category-list-tablerow-template').html()
 
   render:->
     $(@el).html @template {model: @model}

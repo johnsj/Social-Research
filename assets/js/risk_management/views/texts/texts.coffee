@@ -8,7 +8,7 @@ class TextsView extends Backbone.View
 
   initialize:->
     _.bindAll @
-    @template = _.template $('#text-main-template').html()
+    @template = _.template $('#main-template').html()
     @table_template = _.template $('#text-list-table-template').html()
 
     @collection = window.Risk.collections.Texts

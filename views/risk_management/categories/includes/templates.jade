@@ -1,77 +1,19 @@
-script(type="text/template", id="error-item-template")
-  li.error-item <%= msg%>
-    a(id="error-item-close") (X)
-
-script(type="text/template", id="risk-main-template")
-  #form-container
-  #table-container
-
-script(type="text/template", id="risk-list-table-template")
+script(type="text/template", id="category-list-table-template")
   table.item_list#risk_list
     thead
       tr
-        th#risk_title Category Title
-        th#risk_category Belongs to
+        th Category Title
+        th
         th#actionButtons
-    tbody#risk_list_content
+    tbody#category_list_content
 
-script(type="text/template", id="risk-list-tablerow-template")
+script(type="text/template", id="category-list-tablerow-template")
   td#risk_title <%= model.get('title') %>
   td#risk_category <%= model.get('parent').title %>
   td#actionButtons
     <a id="showMore" href="#/categories/<%= model.get('_id')%>"> Show more
     <a id="edit" href="#/categories/edit/<%= model.get('_id')%>"> Edit
     <a id="delete" href="#/categories/delete/<%= model.get('_id')%>"> Delete
-
-script(type="text/template", id="risk-form-template")
-  h3 Enter the information about the new category
-  #errorbox
-    ul#errorlist
-  table.item_form#risk_form
-    tr
-      th 
-        label(for="category_name") Category Title
-      td#category_name
-        input(type="text", name="category_name", id="category_name")
-    tr
-      th 
-        label(for="category_description") Category Description
-      td#category_description
-        textarea(name="category_description", id="category_description")
-    tr
-      th 
-        label(for="category_parent") Meta Category
-      td#category_parent
-        select(type="text", name="category_parent", id="category_parent")
-    tr
-      th
-      td#category_submit
-        button#add_category Add new category
-
-script(type="text/template", id="risk-edit-template")
-  h3 Edit the information for the current category
-  #errorbox
-    ul#errorlist
-  table.item_form#risk_form
-    tr
-      th 
-        label(for="category_name") Category Title
-      td#category_name
-        <input type="text" name="category_name" id="category_name" value="<%= model.get('title')%>">
-    tr
-      th 
-        label(for="category_description") Category Description
-      td#category_description
-        textarea(name="category_description", id="category_description") <%= model.get('description') %>
-    tr
-      th 
-        label(for="category_parent") Meta Category
-      td#category_parent
-        select(type="text", name="category_parent", id="category_parent")
-    tr
-      th
-      td#category_submit
-        button#save_category Save category
 
 script(type="text/template", id="category-detail-template")
   h3#category-title <%= model.get('title') %>

@@ -7,36 +7,33 @@ class CategoryFormView extends Backbone.View
   tagName: "div"
 
   initialize:->
+    _.extend @, Backbone.FormView
     _.bindAll @
     @collection = window.Risk.collections.Categories
-    @template = _.template $('#risk-form-template').html()
-    @metaCollection = window.Risk.collections.MetaCategories
-    @metaCollection.bind 'reset', @addOptions
+    @model = new window.Risk.models.Category
+    @template = _.template $('#form-template').html()
+    @parentCollection = window.Risk.collections.MetaCategories
+    @parentCollection.fetch()
+    @parentCollection.bind 'reset', @render, @
 
   render:->
-    $(@el).html @template
-    @renderMetaOptions()
+    input=
+      header: "New Category"
+    $(@el).html @template {input:input}
+    formConfig=
+      identifier: "category"
+      submitText: "Add new Category"
+    @renderForm(formConfig)
 
-
-  renderMetaOptions:->
-    @metaCollection.fetch()
-
-  addOptions:->
-    $(@el).find('select#category_parent').empty()
-    _.each @metaCollection.models, (model)=>
-      @addOption model
-
-  addOption:(model)->
-    $(@el).find('select#category_parent').append $('<option>').prop('value', model.get('_id')).text(model.get('title'))
 
   events:
-    "click button#add_category": "save"
+    "click button.form_submit": "save"
     "click a#error-item-close": "hideError"
 
   save:(event)->
-    title = $('input#category_name').val() unless $('input#category_name').val() is ""
+    title = $('input#category_title').val() unless $('input#category_title').val() is ""
     description = $('textarea#category_description').val()
-    parent = $('select#category_parent option:selected').val()
+    parent = $('select#category_metacategory option:selected').val()
     saveData =
       title: title
       description: description

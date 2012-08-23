@@ -1,0 +1,20 @@
+script(type="text/template", id="formbuilder_form_template")
+  form(id="formbuilder_form")
+    table.formbuilder_table
+
+script(type="text/template", id="formbuilder_input_text_template")
+  tr
+    th
+      <label for="<%= builder.name%>"> <%= builder.label%>
+    td
+      <input name="<%= builder.name%>" id="<%= builder.id %>" value="<%=builder.value%>">
+
+script(type="text/template", id="formbuilder_input_select_template")
+  tr
+    th
+      <label for="<%= builder.name%>"> <%= builder.label%>
+    td
+      <select name="<%= builder.name%>" id="<%= builder.id%>">
+
+script(type="text/template", id="formbuilder_select_option_template")
+  <option value="<%= builder.value%>"> <%=builder.label%>

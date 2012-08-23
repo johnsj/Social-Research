@@ -8,7 +8,7 @@ class CategoryView extends Backbone.View
 
   initialize:->
     _.bindAll @
-    @template = _.template $('#risk-list-tablerow-template').html()
+    @template = _.template $('#category-list-tablerow-template').html()
 
   render:->
     $(@el).html @template {model: @model}

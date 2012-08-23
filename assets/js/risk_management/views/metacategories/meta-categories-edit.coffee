@@ -7,21 +7,29 @@ class MetaCategoryEditView extends Backbone.View
   tagName: "div"
 
   initialize:->
+    _.extend @, Backbone.FormView
     _.bindAll @
+    @formConfig=
+      identifier: "metacategory"
+      submitText: "Save Metacategory"
     @collection = window.Risk.collections.MetaCategories
     @collection.bind "change", @render, @
-    @template = _.template $('#risk-meta-edit-template').html()
+    @template = _.template $('#form-template').html()
 
   render:->
-    $(@el).html @template {model: @model}
+    input=
+      header: "Edit Metacategory"
+    $(@el).html @template {input:input}
+    
+    @renderForm(@formConfig)
 
   events:
-    "click button#save_category": "save"
+    "click button.form_submit": "save"
     "click a#error-item-close": "hideError"
 
   save:(event)->
-    title = $('input#category_name').val() unless $('input#category_name').val() is ""
-    description = $('textarea#category_description').val()
+    title = $('input#metacategory_title').val() unless $('input#metacategory_title').val() is ""
+    description = $('textarea#metacategory_description').val()
     
     saveData =
       title: title

@@ -1,0 +1,91 @@
+table.item_list {
+  width: 100%;
+}
+table.item_list thead tr th {
+  border-bottom: #333 2px solid;
+  text-align: left;
+  padding: 5px 0px;
+}
+table.item_list tbody tr td {
+  padding: 5px 0px;
+  vertical-align: top;
+  border-bottom: 1px #666 solid;
+}
+table.item_list tbody tr:last-child td {
+  border: none;
+}
+table.item_list tbody tr td#actionButtons {
+  width: 200px;
+  text-align: right;
+}
+table.item_list tbody tr td#actionButtons a {
+  color: #00b7ff;
+  padding-left: 10px;
+}
+table.item_list tbody tr td#actionButtons a:hover {
+  text-decoration: underline;
+}
+table.item_form tr th,
+table.item_form tr td {
+  border-top: 1px solid #999;
+  padding: 5px 0px;
+}
+table.item_form tr td {
+  width: 350px;
+}
+table.item_form tr td input[type=text] {
+  width: 302px;
+  line-height: 18px;
+  padding: 5px;
+  margin-left: 5px;
+}
+table.item_form tr td textarea {
+  width: 310px;
+  height: 150px;
+  margin-left: 5px;
+}
+table.item_form tr th {
+  text-align: left;
+  vertical-align: top;
+}
+table.item_form tr td button {
+  width: 317px;
+  height: 28px;
+  font-size: 15px;
+  margin-left: 5px;
+}
+.item_detail {
+  font-style: italic;
+}
+div#risk-title {
+  display: inline-block;
+  font-size: 22px;
+  padding: 5px 5px;
+  border-radius: 5px;
+}
+.risk-detail-header {
+  margin-bottom: 0px;
+}
+p.risk-detail {
+  margin-top: 0px;
+  border-top: 1px solid #e3e3e3;
+}
+span.indicator_red,
+span.indicator_yellow,
+span.indicator_green {
+  padding: 2px;
+  border-radius: 5px;
+  width: 50px;
+  margin: 0px;
+}
+.indicator_red {
+  background-color: #f00;
+  color: #fff;
+}
+.indicator_yellow {
+  background-color: #ff0;
+}
+.indicator_green {
+  background-color: #008000;
+  color: #fff;
+}

@@ -11,7 +11,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , mongoose = require("mongoose");
-  
+
 mongoose.connect("mongodb://social:Qwer5tgb@alex.mongohq.com:10013/social-research");
 
 var app = express();
@@ -27,9 +27,9 @@ app.configure(function(){
   app.use(app.router);
   
   app.use(require("connect-assets")());
-  
   app.use(require('stylus').middleware(__dirname + '/public'));
   app.use(express.static(path.join(__dirname, 'public')));
+
 });
 
 app.configure('development', function(){
@@ -45,6 +45,9 @@ require("./apps/risk_management/routes")(app);
 require("./apps/risk_management/routes/api-metacategories")(app);
 require("./apps/risk_management/routes/api-categories")(app);
 require("./apps/risk_management/routes/api-texts")(app);
+require("./apps/risk_management/routes/api-severities")(app);
+require("./apps/risk_management/routes/api-probabilities")(app);
+require("./apps/risk_management/routes/api-risks")(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

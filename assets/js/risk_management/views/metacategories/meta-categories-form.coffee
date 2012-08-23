@@ -7,20 +7,28 @@ class MetaCategoryFormView extends Backbone.View
   tagName: "div"
 
   initialize:->
+    _.extend @, Backbone.FormView
     _.bindAll @
+    @model = new window.Risk.models.MetaCategory
     @collection = window.Risk.collections.MetaCategories
-    @template = _.template $('#risk-meta-form-template').html()
+    @template = _.template $('#form-template').html()
 
   render:->
-    $(@el).html @template
+    input=
+      header: "New Metacategory"
+    $(@el).html @template {input:input}
+    formConfig=
+      identifier: "metacategory"
+      submitText: "Add new Metacategory"
+    @renderForm(formConfig)
 
   events:
-    "click button#add_category": "save"
+    "click button.form_submit": "save"
     "click a#error-item-close": "hideError"
 
   save:(event)->
-    title = $('input#category_name').val() unless $('input#category_name').val() is ""
-    description = $('textarea#category_description').val()
+    title = $('input#metacategory_title').val() unless $('input#metacategory_title').val() is ""
+    description = $('textarea#metacategory_description').val()
     saveData =
       title: title 
       description: description

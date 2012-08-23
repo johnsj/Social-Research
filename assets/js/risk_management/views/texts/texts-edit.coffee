@@ -7,38 +7,30 @@ class TextEditView extends Backbone.View
   tagName: "div"
 
   initialize:->
+    _.extend @, Backbone.FormView
     _.bindAll @
     @collection = window.Risk.collections.Texts
     @collection.bind "change", @render, @
-    @template = _.template $('#text-edit-template').html()
-    @metaCollection = window.Risk.collections.Categories
-    @metaCollection.bind 'reset', @addOptions
+    @template = _.template $('#form-template').html()
+    @parentCollection = window.Risk.collections.Categories
+    @parentCollection.bind 'reset', @render, @
 
   render:->
-    $(@el).html @template {model: @model}
-    @renderMetaOptions()
+    input=
+      header: "Edit Text"
+    $(@el).html @template {input:input}
+    formConfig=
+      identifier: "text"
+      submitText: "Save Text"
+    @renderForm(formConfig)
 
-
-  renderMetaOptions:->
-    @metaCollection.fetch()
-
-  addOptions:->
-    $(@el).find('select#text_category').empty()
-    _.each @metaCollection.models, (model)=>
-      @addOption model
-
-  addOption:(model)->
-    if @model.attributes.category._id is model.get('_id')
-      $(@el).find('select#text_category').append $('<option>').prop('value', model.get('_id')).prop('selected', true).text(model.get('title'))
-    else
-      $(@el).find('select#text_category').append $('<option>').prop('value', model.get('_id')).text(model.get('title'))
 
   events:
-    "click button#save_text": "save"
+    "click button.form_submit": "save"
     "click a#error-item-close": "hideError"
 
   save:(event)->
-    title = $('input#text_name').val() unless $('input#text_name').val() is ""
+    title = $('input#text_title').val() unless $('input#text_name').val() is ""
     description = $('textarea#text_description').val()
     category = $('select#text_category option:selected').val()
     saveData =

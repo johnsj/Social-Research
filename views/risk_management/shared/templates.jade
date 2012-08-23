@@ -1,0 +1,39 @@
+script(type="text/template", id="main-template")
+  #form-container
+  #table-container
+
+script(type="text/template", id="error-item-template")
+  li.error-item <%= msg%>
+    a(id="error-item-close") (X)
+
+// Form
+script(type="text/template", id="form-template")
+  h3 <%= input.header%>
+  #errorbox
+    ul#errorlist
+  table.item_form
+script(type="text/template", id="form-input-text-template")
+  tr.form_input_text
+    th 
+      <label for="<%= input.name%>"> <%= input.label%></label>
+    td.form_input_text
+      <input type="text" name="<%= input.name%>" id="<%= input.id%>" value="<%= input.value%>">
+script(type="text/template", id="form-input-textarea-template")
+  tr.form_input_textarea
+    th 
+      <label for="<%= input.name%>"> <%= input.label%> </label>
+    td.form_input_textarea
+      <textarea name="<%= input.name%>" id="<%= input.name%>"><%= input.value%></textarea>
+script(type="text/template", id="form-input-select-template")
+  tr.form_input_select
+    th 
+      <label for="<%= input.name%>"> <%= input.label%></label>
+    td.form_input_select
+      <select name="<%= input.name%>" id="<%= input.id%>"> </select>
+script(type=" text/template", id="form-input-select-option-template")
+  <option value="<%= value%>" <%= selected%>> <%= label%> </option>
+script(type="text/template", id="form-submit-template")
+  tr.form_submit
+    th
+    td.form_submit
+      button.form_submit <%= submitText%>

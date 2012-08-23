@@ -1,0 +1,31 @@
+script(type="text/template", id="risk-list-table-template")
+  table.item_list#risk_list
+    thead
+      tr
+        th Risk title
+        th Category
+        th Assessment
+        th#actionButtons
+    tbody#risk_list_content
+
+script(type="text/template", id="risk-list-tablerow-template")
+  <td id="risk-title" ><%= model.get('title') %></td>
+  td#risk-category <%= model.get('category').title %>
+  td#risk-assessment Status: <span class="indicator_<%= model.assesment_level_color()%>"> <%= model.assesment_level_color()%></span>
+  td#actionButtons
+    <a id="showMore" href="#/risks/<%= model.get('_id')%>"> Show more
+    <a id="edit" href="#/risks/edit/<%= model.get('_id')%>"> Edit
+    <a id="delete" href="#/risks/delete/<%= model.get('_id')%>"> Delete
+
+script(type="text/template", id="risk-detail-template")
+  <div id="risk-title" class="indicator_<%= model.assesment_level_color()%>"><%= model.get('title') %></div>
+  h3.risk-detail-header Description
+  p.risk-detail#risk-description <%= model.get('description') %>
+  h3.risk-detail-header Impact
+  p.risk-detail#risk-impact <%= model.get('impact') %>
+  h3.risk-detail-header Prior Detection
+  p.risk-detail#risk-prior-detection <%= model.get('prior_detection') %>
+  h3.risk-detail-header Mitigation Approach
+  p.risk-detail#risk-mitigation-approach <%= model.get('mitigation_approach') %>
+  h3.risk-detail-header Proposed Solutions
+  p.risk-detail#risk-proposed-solutions <%= model.get('proposed_solutions') %>

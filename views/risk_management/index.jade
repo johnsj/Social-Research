@@ -4,9 +4,14 @@ block styles
   != css("risk_management/risk_style")
 
 block scripts
-  != js("risk_management/application")
+  != js("application")
 
 block navigation
+  li
+    a(href="#/risks", id="risks") Risks
+    ul.submenu
+      li
+        a(href="#/risks/new") New Risk
   li
     a(href="#/metacategories", id="parent-categories") Meta Categories
     ul.submenu
@@ -17,19 +22,8 @@ block navigation
     ul.submenu
       li
         a(href="#/categories/new") New Category
-  li
-    a(href="#/texts", id="texts") Texts
-    ul.submenu
-      li
-        a(href="#/texts/new") New Text
-  li
-    a(href="#/probabilities") Probabilities
-    ul.submenu
-      li
-        a(href="#/probabilities/new") New Probability
 
 block content
-  h1#page-title= title
   #main-container
     #main-view
 
@@ -37,4 +31,5 @@ block template-scripts
   include categories/includes/templates
   include metacategories/includes/templates
   include texts/includes/templates
-  include probabilities/includes/templates
+  include risks/templates
+  include shared/templates

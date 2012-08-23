@@ -8,8 +8,8 @@ class CategoriesView extends Backbone.View
 
   initialize:->
     _.bindAll @
-    @template = _.template $('#risk-main-template').html()
-    @table_template = _.template $('#risk-list-table-template').html()
+    @template = _.template $('#main-template').html()
+    @table_template = _.template $('#category-list-table-template').html()
 
     @collection = window.Risk.collections.Categories
     @collection.bind 'remove', @render, @
@@ -19,7 +19,7 @@ class CategoriesView extends Backbone.View
     $(@el).find(@table_el).html @table_template
     _.each @collection.models, (model)=>
       itemView = new window.Risk.views.CategoryView({model: model})
-      $(@el).find("tbody#risk_list_content").append itemView.render().el
+      $(@el).find("tbody#category_list_content").append itemView.render().el
     @
 
 window.Risk.views.CategoriesView = CategoriesView
